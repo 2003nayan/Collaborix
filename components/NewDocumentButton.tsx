@@ -8,7 +8,6 @@ import { createNewDocument } from "@/actions/actions";
 
 function NewDocumentButton() {
   const [isPending, startTransition] = useTransition();
-
   const router = useRouter();
 
   function handleCreateNewDocument() {
@@ -18,7 +17,7 @@ function NewDocumentButton() {
     });
   }
   return (
-    <Button onClick={handleCreateNewDocument} disabled={!isPending}>
+    <Button onClick={handleCreateNewDocument} disabled={isPending}>
       {isPending ? "Creating..." : "New Document"}
     </Button>
   );

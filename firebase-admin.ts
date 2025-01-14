@@ -1,23 +1,22 @@
 import {
-    initializeApp,
-    getApps,
-    getApp,
-    App, 
-    cert
+  initializeApp,
+  getApps,
+  getApp,
+  App,
+  cert,
+  ServiceAccount, // Import the type
 } from "firebase-admin/app";
-
 import { getFirestore } from "firebase-admin/firestore";
-
-const serviceKey = require("@/serviceKey.json");
+import serviceKey from "@/service_key.json"; // Import the JSON file
 
 let app: App;
 
 if (getApps().length === 0) {
-    app = initializeApp({
-        credential: cert(serviceKey),
-    });
+  app = initializeApp({
+    credential: cert(serviceKey as ServiceAccount), // Cast the JSON object
+  });
 } else {
-    app = getApp();
+  app = getApp();
 }
 
 const adminDb = getFirestore(app);
