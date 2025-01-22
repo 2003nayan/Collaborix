@@ -3,11 +3,12 @@ import { auth } from "@clerk/nextjs/server";
 
 async function DocLayout({
   children,
-  params: { id },
+  params,
 }: {
   children: React.ReactNode;
   params: { id: string };
 }) {
+  const { id } = params;
   const { userId } = await auth();
 
   if (!userId) {

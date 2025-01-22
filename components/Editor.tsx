@@ -7,17 +7,40 @@ import { LiveblocksYjsProvider } from "@liveblocks/yjs";
 import { Button } from "./ui/button";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { BlockNoteView } from "@blocknote/shadcn";
+import { useCreateBlockNote } from "@blocknote/react";
+import { BlockNoteEditor } from "@blocknote/core";
+// import "@blocknote/core/fonts/inter.css";
+import "@blocknote/shadcn/style.css";
+import stringToColor from "@/lib/stringToColor";
+import { useSelf } from "@liveblocks/react/suspense";
 
 type EditorProps = {
   doc: Y.Doc;
   provider: any;
+  // provider: LiveblocksYjsProvider;
   darkMode: boolean;
 };
 
 function BlockNote({ doc, provider, darkMode }: EditorProps) {
+  const userInfo = useSelf((me) => me.info);
+  const editor: BlockNoteEditor = useCreateBlockNote({
+    collaboration: {
+      provider,
+      fragment: doc.getXmlFragment("document-store"),
+      user: {
+        name: userInfo?.name,
+        color: stringToColor(userInfo?.email),
+      },
+    },
+  });
+
   return (
-    <div>
-      <BlockNoteView />
+    <div className="relative max-w-6xl mx-auto">
+      <BlockNoteView
+        editor={editor}
+        theme={darkMode ? "dark" : "light"}
+        className="min-h-screen"
+      />
     </div>
   );
 }
