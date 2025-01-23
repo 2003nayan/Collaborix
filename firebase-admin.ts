@@ -7,7 +7,8 @@ import {
   ServiceAccount, // Import the type
 } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
-import serviceKey from "@/service_key.json"; // Import the JSON file
+// import serviceKey from "@/service_key.json"; // Import the JSON file
+import serviceKey from "./service_key.json"; 
 
 let app: App;
 
