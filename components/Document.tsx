@@ -61,7 +61,7 @@ function Document({ id }: { id: string }) {
         {/* ManageUsers */}
         <ManageUsers />
         {/* Avatars */}
-        {/* <Avatars /> */}
+        <Avatars />
       </div>
 
       <hr className="pb-10" />

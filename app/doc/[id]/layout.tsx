@@ -8,7 +8,7 @@ async function DocLayout({
   children: React.ReactNode;
   params: { id: string };
 }) {
-  const { id } = params;
+  const { id } = await params;
   const { userId } = await auth();
 
   if (!userId) {
