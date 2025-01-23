@@ -1,20 +1,14 @@
-import {
-  initializeApp,
-  getApps,
-  getApp,
-  App,
-  cert,
-  ServiceAccount, // Import the type
-} from "firebase-admin/app";
+import { initializeApp, getApps, getApp, App, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 // import serviceKey from "@/service_key.json"; // Import the JSON file
-import serviceKey from "./service_key.json"; 
+// import serviceKey from "./service_key.json";
+const serviceKey = JSON.parse(process.env.FIREBASE_SERVICE_KEY || "");
 
 let app: App;
 
 if (getApps().length === 0) {
   app = initializeApp({
-    credential: cert(serviceKey as ServiceAccount), // Cast the JSON object
+    credential: cert(serviceKey), // Cast the JSON object
   });
 } else {
   app = getApp();
