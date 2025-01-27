@@ -23,7 +23,7 @@ import { BotIcon, LanguagesIcon } from "lucide-react";
 import { toast } from "sonner";
 import Markdown from "react-markdown";
 
-type Langauge =
+type Language =
   | "english"
   | "hindi"
   | "portuguese"
@@ -52,7 +52,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
   const [isOpen, setIsOpen] = useState(false);
   const [langauge, setLangauge] = useState<string>("");
   const [summary, setSummary] = useState("");
-  const [question, setQuestion] = useState("");
+  const [question, ] = useState("");
   const [isPending, startTransition] = useTransition();
 
   const handleAskQuestion = (e: FormEvent) => {
