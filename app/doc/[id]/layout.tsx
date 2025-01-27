@@ -3,11 +3,11 @@ import { auth } from "@clerk/nextjs/server";
 
 interface LayoutProps {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>; // Ensure `params` is a Promise
 }
 
 export default async function DocLayout({ children, params }: LayoutProps) {
-  const { id } = params;
+  const { id } = await params;
   const { userId } = await auth();
 
   if (!userId) {
