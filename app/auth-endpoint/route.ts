@@ -11,13 +11,18 @@ export async function POST(req: NextRequest) {
   }
 
   const { sessionClaims } = await auth();
+
+  if (!sessionClaims || !sessionClaims.email || !sessionClaims.fullName || !sessionClaims.image) {
+    throw new Error("Missing session claims");
+  }
+
   const { room } = await req.json();
 
-  const session = liveblocks.prepareSession(sessionClaims?.email!, {
+  const session = liveblocks.prepareSession(sessionClaims?.email, {
     userInfo: {
-      name: sessionClaims?.fullName!,
-      email: sessionClaims?.email!,
-      avatar: sessionClaims?.image!,
+      name: sessionClaims?.fullName,
+      email: sessionClaims?.email,
+      avatar: sessionClaims?.image,
     },
   });
 
