@@ -16,11 +16,19 @@ type FullServiceAccount = {
   [key: string]: string | undefined; // To allow additional properties
 };
 
+if (
+  !process.env.FIREBASE_PROJECT_ID ||
+  !process.env.FIREBASE_PRIVATE_KEY ||
+  !process.env.FIREBASE_CLIENT_EMAIL
+) {
+  throw new Error("Missing Firebase environment variables");
+}
+
 // Construct the service account object
 const serviceKey: FullServiceAccount = {
-  projectId: process.env.FIREBASE_PROJECT_ID!,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY!,
-  clientEmail: process.env.FIREBASE_CLIENT_EMAIL!,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
   privateKeyId: process.env.FIREBASE_PRIVATE_KEY_ID,
   authUri: process.env.FIREBASE_AUTH_URI,
   tokenUri: process.env.FIREBASE_TOKEN_URI,
