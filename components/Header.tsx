@@ -8,6 +8,7 @@ import {
   useUser,
 } from "@clerk/nextjs";
 import Breadcrumbs from "./Breadcrumbs";
+import { Button } from "./ui/button";
 
 function Header() {
   const { user } = useUser();
@@ -25,7 +26,9 @@ function Header() {
 
       <div>
         <SignedOut>
-          <SignInButton />
+          <Button>
+            <SignInButton />
+          </Button>
         </SignedOut>
         <SignedIn>
           <UserButton />
