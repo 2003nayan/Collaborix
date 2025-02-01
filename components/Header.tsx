@@ -26,7 +26,7 @@ function Header() {
 
       <div>
         <SignedOut>
-          <Button>
+          <Button asChild>
             <SignInButton />
           </Button>
         </SignedOut>
