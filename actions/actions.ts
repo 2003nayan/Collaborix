@@ -66,7 +66,7 @@ export async function deleteDocument(roomId: string) {
 
     const query = await adminDb
       .collectionGroup("rooms")
-      .where("roomId", "==", roomId)ema
+      .where("roomId", "==", roomId)
       .get();
 
     const batch = adminDb.batch();
