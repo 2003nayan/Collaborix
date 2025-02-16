@@ -79,20 +79,37 @@ function Sidebar() {
     setGroupedData(grouped);
   }, [data]);
 
+  // Reset groupedData when user signs out
+  useEffect(() => {
+    if (!user) {
+      setGroupedData({
+        owner: [],
+        editor: [],
+      });
+    }
+  }, [user]);
+
   const menuOptions = (
     <>
       <NewDocumentButton />
-      <div className="flex py-4 flex-col space-y-4 md:max-w-36">
+      <div className="flex py-4 flex-col space-y-6">
         {/* My Docs */}
         {groupedData.owner.length === 0 ? (
-          <h2 className="text-gray-500 font-semibold text-sm">
-            No Document Found
-          </h2>
+          <div className="flex items-center space-x-2 px-3 py-2 rounded-lg">
+            <p className="text-gray-500 text-sm font-medium">
+              No Documents found
+            </p>
+          </div>
         ) : (
           <>
-            <h2 className="text-gray-500 font-semibold text-sm">
-              My Documents
-            </h2>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-gray-500 font-medium text-sm tracking-wide uppercase">
+                My Documents
+              </h2>
+              <span className="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-500 rounded-full">
+                {groupedData.owner.length}
+              </span>
+            </div>
             {groupedData.owner.map((doc) => (
               <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
             ))}
