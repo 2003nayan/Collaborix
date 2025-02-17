@@ -38,37 +38,45 @@ function Document({ id }: { id: string }) {
   };
 
   return (
-    <div className="flex-1 h-full bg-white p-5">
-      <div className="flex max-w-6xl mx-auto justify-between pb-5">
-        <form className="flex flex-1 space-x-2" onSubmit={updateTitle}>
-          {/* update title..... */}
-          <Input value={input} onChange={(e) => setInput(e.target.value)} />
+    <div className="flex-1 h-full bg-gray-50">
+      <div className="max-w-6xl mx-auto p-8">
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-6 flex flex-col gap-1">
+          <form className="flex flex-1 space-x-3 mb-4" onSubmit={updateTitle}>
+            <div className="flex-1 relative group">
+              <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                className="w-full bg-gray-50 focus:bg-white border-gray-200 focus:ring-2 focus:ring-gray-200 transition-all duration-200"
+                placeholder="Document Title"
+              />
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-800 group-hover:w-full transition-all duration-300" />
+            </div>
 
-          <Button disabled={isUpdating} type="submit">
-            {isUpdating ? "Updating..." : "Update"}
-          </Button>
-          {isOwner && (
-            <>
-              {/* Invite User */}
-              <InviteUser />
-              {/* Delete User */}
-              <DeleteDocument />
-            </>
-          )}
-        </form>
+            <Button
+              disabled={isUpdating}
+              type="submit"
+              className="bg-gray-800 hover:bg-gray-700 transition-colors"
+            >
+              {isUpdating ? "Updating..." : "Update"}
+            </Button>
+            {isOwner && (
+              <div className="flex space-x-3">
+                <InviteUser />
+                <DeleteDocument />
+              </div>
+            )}
+          </form>
+
+          <div className="flex justify-between items-center">
+            <ManageUsers />
+            <Avatars />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <Editor />
+        </div>
       </div>
-      <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
-        {/* ManageUsers */}
-        <ManageUsers />
-        {/* Avatars */}
-        <Avatars />
-      </div>
-
-      <hr className="pb-10" />
-
-      {/* Collaborative Editor */}
-
-      <Editor />
     </div>
   );
 }

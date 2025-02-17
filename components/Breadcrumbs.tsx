@@ -28,6 +28,7 @@ function Breadcrumbs() {
 
           const href = `/${segments.slice(0, index + 1).join("/")}`;
           const isLast = index === segments.length - 1;
+          const isDoc = segment === "doc";
 
           return (
             <Fragment key={segment}>
@@ -35,6 +36,10 @@ function Breadcrumbs() {
               <BreadcrumbItem>
                 {isLast ? (
                   <BreadcrumbPage>{segment}</BreadcrumbPage>
+                ) : isDoc ? (
+                  <span className="text-muted-foreground cursor-default">
+                    {segment}
+                  </span>
                 ) : (
                   <BreadcrumbLink href={href}>{segment}</BreadcrumbLink>
                 )}

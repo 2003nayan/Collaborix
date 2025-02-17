@@ -91,20 +91,22 @@ function Sidebar() {
 
   const menuOptions = (
     <>
-      <NewDocumentButton />
+      <div className="flex items-center justify-center">
+        <NewDocumentButton />
+      </div>
       <div className="flex py-4 flex-col space-y-6">
         {/* My Docs */}
         {groupedData.owner.length === 0 ? (
           <div className="flex items-center space-x-2 px-3 py-2 rounded-lg">
             <p className="text-gray-500 text-sm font-medium">
-              No Documents found
+              NO DOCUMENTS FOUND
             </p>
           </div>
         ) : (
           <>
             <div className="flex items-center space-x-2">
               <h2 className="text-gray-500 font-medium text-sm tracking-wide uppercase">
-                My Documents
+                MY DOCUMENTS
               </h2>
               <span className="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-500 rounded-full">
                 {groupedData.owner.length}
