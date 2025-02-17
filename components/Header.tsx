@@ -47,7 +47,7 @@ function Header() {
         <div>
           <SignedOut>
             <Button variant="default" asChild className="font-medium">
-              <SignInButton />
+              <SignInButton mode="modal" />
             </Button>
           </SignedOut>
           <SignedIn>

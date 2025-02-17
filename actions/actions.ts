@@ -5,7 +5,7 @@ import liveblocks from "@/lib/liveblocks";
 import { auth } from "@clerk/nextjs/server";
 
 export async function createNewDocument() {
-  // auth().protect();
+  auth.protect();
   // const { sessionClaims } = await auth();
 
   const { userId, sessionClaims } = await auth();
@@ -51,6 +51,8 @@ export async function createNewDocument() {
 }
 
 export async function deleteDocument(roomId: string) {
+  auth.protect();
+
   const { userId } = await auth();
 
   if (!userId) {
@@ -92,6 +94,8 @@ export async function deleteDocument(roomId: string) {
 }
 
 export async function inviteUserToDocument(roomId: string, email: string) {
+  auth.protect();
+
   const { userId } = await auth();
 
   if (!userId) {
@@ -125,11 +129,7 @@ export async function inviteUserToDocument(roomId: string, email: string) {
 }
 
 export async function removeUserFromDocument(roomId: string, email: string) {
-  const { userId } = await auth();
-
-  if (!userId) {
-    throw new Error("User is not authenticated");
-  }
+  auth.protect();
 
   console.log("RemoveUserFromDocument", roomId, email);
 
@@ -145,7 +145,7 @@ export async function removeUserFromDocument(roomId: string, email: string) {
       success: true,
     };
   } catch (error) {
-    console.error(error);
+    console.error("Error removing user from document:", error);
     return {
       success: false,
     };

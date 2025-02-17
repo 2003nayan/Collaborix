@@ -18,6 +18,8 @@ import { useRoom } from "@liveblocks/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "@/firebase";
 import { collectionGroup, query, where } from "firebase/firestore";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 function ManageUsers() {
   const { user } = useUser();
@@ -43,6 +45,23 @@ function ManageUsers() {
       }
     });
   };
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!usersInRoom) return;
+
+    const currentUserId = user?.emailAddresses[0].toString();
+
+    const isStillInRoom = usersInRoom.docs.some(
+      (doc) => doc.data().userId === currentUserId
+    );
+
+    if (!isStillInRoom) {
+      toast.error("The owner of the file has removed access from you.");
+      router.push("/");
+    }
+  }, [usersInRoom, user, router]);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
