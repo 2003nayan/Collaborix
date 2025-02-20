@@ -15,6 +15,7 @@ import stringToColor from "@/lib/stringToColor";
 import { useSelf } from "@liveblocks/react/suspense";
 import TranslateDocument from "./TranslateDocument";
 import ChatToDocument from "./ChatToDocument";
+// import { ShareDocument } from './ShareDocument';
 
 type EditorProps = {
   doc: Y.Doc;
@@ -80,7 +81,10 @@ function Editor() {
       <div className="flex items-center gap-4 justify-end mb-8 sticky top-4 z-10 bg-opacity-80 backdrop-blur-sm p-3 rounded-lg shadow-sm">
         <TranslateDocument doc={doc} />
         <ChatToDocument doc={doc} />
-
+        {/* <ShareDocument 
+          documentId={room.id} 
+          documentName="Document Title" // You might want to pass this as a prop
+        /> */}
         <Button
           className={`${style} flex items-center gap-2`}
           onClick={() => setDarkMode(!darkMode)}

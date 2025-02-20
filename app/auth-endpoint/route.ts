@@ -12,7 +12,12 @@ export async function POST(req: NextRequest) {
 
   const { sessionClaims } = await auth();
 
-  if (!sessionClaims || !sessionClaims.email || !sessionClaims.fullName || !sessionClaims.image) {
+  if (
+    !sessionClaims ||
+    !sessionClaims.email ||
+    !sessionClaims.fullName ||
+    !sessionClaims.image
+  ) {
     throw new Error("Missing session claims");
   }
 

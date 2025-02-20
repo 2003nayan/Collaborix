@@ -24,18 +24,64 @@ function InviteUser() {
   const handleInvite = async (e: FormEvent) => {
     e.preventDefault();
 
+    if (!email) {
+      toast.error("Please enter an email address");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
     const roomId = pathname.split("/").pop();
-    if (!roomId) return;
+    if (!roomId) {
+      toast.error("Invalid document ID");
+      return;
+    }
 
     startTransition(async () => {
-      const { success } = await inviteUserToDocument(roomId, email);
+      try {
+        const { success } = await inviteUserToDocument(roomId, email);
 
-      if (success) {
-        setIsOpen(false);
-        setEmail("");
-        toast.success("User Added to room successfully");
-      } else {
-        toast.error("Failed to add user to room!");
+        if (success) {
+          try {
+            const response = await fetch("/api/send-invite", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email,
+                roomId,
+              }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.error || "Failed to send invitation email");
+            }
+
+            setIsOpen(false);
+            setEmail("");
+            toast.success("User added and invitation email sent!");
+          } catch (error) {
+            console.error("Error sending invitation:", error);
+            toast.error(
+              error instanceof Error
+                ? error.message
+                : "User added but failed to send invitation email"
+            );
+          }
+        } else {
+          toast.error("Failed to add user to room!");
+        }
+      } catch (error) {
+        console.error("Error in invite process:", error);
+        toast.error("An unexpected error occurred");
       }
     });
   };
