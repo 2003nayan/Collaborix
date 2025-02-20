@@ -52,7 +52,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
   const [isOpen, setIsOpen] = useState(false);
   const [langauge, setLangauge] = useState<string>("");
   const [summary, setSummary] = useState("");
-  const [question, ] = useState("");
+  const [question] = useState("");
   const [isPending, startTransition] = useTransition();
 
   const handleAskQuestion = (e: FormEvent) => {
@@ -79,7 +79,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <Button asChild variant="outline">
+      <Button asChild variant="outline" className="dark:hover:bg-gray-700">
         <DialogTrigger>
           <LanguagesIcon />
           Translate

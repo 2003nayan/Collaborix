@@ -21,7 +21,7 @@ function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b dark:bg-zinc-950">
       <div className="flex items-center justify-between p-4 mx-5">
         <div onClick={redirectToHome} className="cursor-pointer">
           {user ? (

@@ -135,7 +135,7 @@ function Sidebar() {
   );
 
   return (
-    <div className="p-2 md:p-5 bg-background border-r dark:border-slate-800">
+    <div className="p-2 md:p-5 bg-background border-r dark:border-slate-800 dark:bg-zinc-950">
       <div className="md:hidden">
         <Sheet>
           <SheetTrigger>

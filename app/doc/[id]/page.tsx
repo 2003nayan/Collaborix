@@ -12,10 +12,10 @@ function DocumentPage({ params }: { params: Promise<{ id: string }> }) {
   }, []);
 
   return (
-    <div className="flex flex-col flex-1 min-h-screen">
+    <div className="flex flex-col flex-1 min-h-screen bg-white dark:bg-gray-900">
       {!isHydrated ? (
         <div className="flex items-center justify-center h-screen">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white"></div>
         </div>
       ) : (
         <Document id={id} />

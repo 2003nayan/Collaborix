@@ -20,7 +20,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body className="min-h-screen bg-background text-foreground dark:bg-slate-950">
+        <body className="min-h-screen bg-background text-foreground dark:bg-slate-950 dark:text-white">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -30,7 +30,7 @@ export default function RootLayout({
             <Header />
             <div className="flex min-h-screen">
               <Sidebar />
-              <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide">
+              <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide dark:bg-zinc-900">
                 {children}
               </div>
             </div>
