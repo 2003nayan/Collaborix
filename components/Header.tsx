@@ -11,7 +11,7 @@ import Breadcrumbs from "./Breadcrumbs";
 import { Button } from "./ui/button";
 import { Shapes } from "lucide-react";
 import { useRouter } from "next/navigation";
-
+import { ThemeToggle } from "./theme-toggle";
 function Header() {
   const { user } = useUser();
   const router = useRouter();
@@ -23,7 +23,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="flex items-center justify-between p-4 mx-5">
-        <div onClick={redirectToHome}>
+        <div onClick={redirectToHome} className="cursor-pointer">
           {user ? (
             <h1 className="text-2xl font-medium">
               {user.firstName}
@@ -41,7 +41,8 @@ function Header() {
           <Breadcrumbs />
         </div>
 
-        <div>
+        <div className="flex gap-8">
+          <ThemeToggle />
           <SignedOut>
             <Button variant="default" asChild className="font-medium">
               <SignInButton mode="modal" />

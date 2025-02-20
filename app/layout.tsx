@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "./providers";
 
 export const metadata: Metadata = {
   title: "Collaborix",
@@ -17,17 +18,25 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body>
-          <Header />
-          <div className="flex min-h-screen">
-            <Sidebar />
-            <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide">
-              {children}
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body className="min-h-screen bg-background text-foreground dark:bg-slate-950">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <div className="flex min-h-screen">
+              <Sidebar />
+              <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide">
+                {children}
+              </div>
             </div>
-          </div>
 
-          <Toaster position="top-center" />
+            <Toaster position="top-center" />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

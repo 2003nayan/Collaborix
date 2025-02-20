@@ -98,17 +98,17 @@ function Sidebar() {
         {/* My Docs */}
         {groupedData.owner.length === 0 ? (
           <div className="flex items-center space-x-2 px-3 py-2 rounded-lg">
-            <p className="text-gray-500 text-sm font-medium">
+            <p className="text-muted-foreground text-sm font-medium">
               NO DOCUMENTS FOUND
             </p>
           </div>
         ) : (
           <>
             <div className="flex items-center space-x-2">
-              <h2 className="text-gray-500 font-medium text-sm tracking-wide uppercase">
+              <h2 className="text-muted-foreground font-medium text-sm tracking-wide uppercase">
                 MY DOCUMENTS
               </h2>
-              <span className="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-500 rounded-full">
+              <span className="px-2 py-0.5 text-xs font-medium bg-secondary text-secondary-foreground rounded-full">
                 {groupedData.owner.length}
               </span>
             </div>
@@ -122,7 +122,7 @@ function Sidebar() {
         {/* Share with me */}
         {groupedData.editor.length > 0 && (
           <>
-            <h2 className="text-gray-500 font-semibold text-sm">
+            <h2 className="text-muted-foreground font-semibold text-sm">
               Shared With Me
             </h2>
             {groupedData.editor.map((doc) => (
@@ -135,15 +135,18 @@ function Sidebar() {
   );
 
   return (
-    <div className="p-2 md:p-5 bg-gray-200 relative">
+    <div className="p-2 md:p-5 bg-background border-r dark:border-slate-800">
       <div className="md:hidden">
         <Sheet>
           <SheetTrigger>
-            <MenuIcon className="p-2 hover:opacity-30 rounded-lg" size={40} />
+            <MenuIcon
+              className="p-2 hover:bg-accent hover:rounded-lg transition-all"
+              size={40}
+            />
           </SheetTrigger>
-          <SheetContent side={"left"}>
+          <SheetContent side={"left"} className="dark:bg-slate-950">
             <SheetHeader>
-              <SheetTitle>Menu</SheetTitle>
+              <SheetTitle className="dark:text-white">Menu</SheetTitle>
               <div>{menuOptions}</div>
             </SheetHeader>
           </SheetContent>

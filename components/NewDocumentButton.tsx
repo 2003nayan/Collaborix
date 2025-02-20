@@ -76,7 +76,7 @@ function NewDocumentButton() {
             <Button
               onClick={handleCreateNewDocument}
               disabled={!isSignedIn || isPending}
-              className="min-w-[140px] transition-all duration-200 hover:opacity-90 hover:shadow-sm"
+              className="min-w-[140px] transition-all duration-200 hover:opacity-90 hover:shadow-sm dark:bg-slate-200 dark:hover:bg-slate-400"
             >
               {isPending ? (
                 <span className="flex items-center gap-2">

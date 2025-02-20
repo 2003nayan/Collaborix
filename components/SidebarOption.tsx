@@ -15,13 +15,16 @@ function SidebarOption({ href, id }: { href: string; id: string }) {
   return (
     <Link
       href={href}
-      className={`border block px-3 py-2 rounded-lg
+      className={`border border-gray-300 dark:border-slate-800 px-3 py-2 rounded-lg
         transition-all duration-200 ease-in-out
-        hover:bg-gray-100 ${
-          isActive ? "bg-gray-300 font-bold border-black" : "border-gray-400"
+        hover:bg-accent
+        ${
+          isActive
+            ? "bg-accent/80 font-bold border-primary"
+            : "border-muted hover:border-muted-foreground"
         }`}
     >
-      <p className="truncate text-black">{data.title}</p>
+      <p className="truncate text-foreground">{data.title}</p>
     </Link>
   );
 }
