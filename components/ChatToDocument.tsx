@@ -60,16 +60,17 @@ function ChatToDocument({ doc }: { doc: Y.Doc }) {
         <DialogHeader>
           <DialogTitle>Chat to the Document!</DialogTitle>
           <DialogDescription>
-            <p>Ask a question and chat to the document with AI.</p>
-            <i>
+            Ask a question and chat to the document with AI.
+            <br />
+            <span className="italic">
               (No response will be updated as GPT is not available for free at
               the moment, looking for any other options)
-            </i>
+            </span>
           </DialogDescription>
 
           <hr className="mt-5" />
 
-          {question && <p className="mt-5 text-gray-500">Q: {question}</p>}
+          {question && <div className="mt-5 text-gray-500">Q: {question}</div>}
         </DialogHeader>
 
         {summary && (

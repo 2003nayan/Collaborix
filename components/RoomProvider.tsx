@@ -21,10 +21,17 @@ function RoomProvider({
         cursor: null,
       }}
     >
-      <ClientSideSuspense fallback={<LoadingSpinner />}>
-        <LiveCursorProvider>{children}</LiveCursorProvider>
-      </ClientSideSuspense>
+      {/* Render children directly for collaborative editing */}
       {children}
+
+      {/* Wrap cursor functionality in ClientSideSuspense */}
+      <ClientSideSuspense fallback={<LoadingSpinner />}>
+        {() => (
+          <LiveCursorProvider>
+            <div style={{ display: "none" }} />
+          </LiveCursorProvider>
+        )}
+      </ClientSideSuspense>
     </RoomProviderWrapper>
   );
 }

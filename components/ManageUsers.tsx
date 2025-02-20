@@ -49,9 +49,11 @@ function ManageUsers() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!usersInRoom) return;
+    if (!usersInRoom || !user) return;
 
-    const currentUserId = user?.emailAddresses[0].toString();
+    if (usersInRoom.docs.length === 0) return;
+
+    const currentUserId = user.emailAddresses[0].toString();
 
     const isStillInRoom = usersInRoom.docs.some(
       (doc) => doc.data().userId === currentUserId

@@ -26,18 +26,14 @@ function NewDocumentButton() {
   }
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            onClick={handleCreateNewDocument}
-            disabled={!isSignedIn || isPending}
-            className="min-w-[140px] transition-all duration-200 hover:opacity-90 hover:shadow-sm"
-          >
-            {isPending ? (
-              <span className="flex items-center gap-2">
+    <>
+      {isPending && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md">
+          <div className="rounded-lg bg-zinc-900/90 p-6 shadow-lg">
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative h-12 w-12">
                 <svg
-                  className="h-5 w-5 animate-spin"
+                  className="absolute h-full w-full animate-spin-slow"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -45,39 +41,88 @@ function NewDocumentButton() {
                   <path
                     d="M12 4V2M12 22v-2M6.34 6.34L4.93 4.93M19.07 19.07l-1.41-1.41M4 12H2M22 12h-2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
                     stroke="currentColor"
-                    strokeWidth="2.5"
+                    strokeWidth="2"
                     strokeLinecap="round"
+                    className="opacity-40"
                   />
                 </svg>
-                Creating...
-              </span>
-            ) : (
-              <span className="flex items-center gap-2">
                 <svg
-                  className="h-4 w-4"
+                  className="absolute h-full w-full animate-spin-reverse-slower"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M12 4v16m-8-8h16"
+                    d="M12 4V2M12 22v-2M6.34 6.34L4.93 4.93M19.07 19.07l-1.41-1.41M4 12H2M22 12h-2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
                     stroke="currentColor"
-                    strokeWidth="2.5"
+                    strokeWidth="2"
                     strokeLinecap="round"
+                    className="opacity-80"
                   />
                 </svg>
-                New Document
-              </span>
-            )}
-          </Button>
-        </TooltipTrigger>
-        {!isSignedIn && (
-          <TooltipContent>
-            <p>Please sign in to create a new document</p>
-          </TooltipContent>
-        )}
-      </Tooltip>
-    </TooltipProvider>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <p className="text-sm font-medium text-zinc-200">
+                  Creating document...
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              onClick={handleCreateNewDocument}
+              disabled={!isSignedIn || isPending}
+              className="min-w-[140px] transition-all duration-200 hover:opacity-90 hover:shadow-sm"
+            >
+              {isPending ? (
+                <span className="flex items-center gap-2">
+                  <svg
+                    className="h-5 w-5 animate-spin"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 4V2M12 22v-2M6.34 6.34L4.93 4.93M19.07 19.07l-1.41-1.41M4 12H2M22 12h-2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  Creating...
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  <svg
+                    className="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 4v16m-8-8h16"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  New Document
+                </span>
+              )}
+            </Button>
+          </TooltipTrigger>
+          {!isSignedIn && (
+            <TooltipContent>
+              <p>Please sign in to create a new document</p>
+            </TooltipContent>
+          )}
+        </Tooltip>
+      </TooltipProvider>
+    </>
   );
 }
 

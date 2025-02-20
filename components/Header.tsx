@@ -23,17 +23,14 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="flex items-center justify-between p-4 mx-5">
-        <div>
+        <div onClick={redirectToHome}>
           {user ? (
             <h1 className="text-2xl font-medium">
               {user.firstName}
               <span>{"'s"}</span> Space
             </h1>
           ) : (
-            <h1
-              className="text-2xl font-[600] flex items-center gap-2.5 hover:text-primary/90 transition-colors cursor-pointer"
-              onClick={redirectToHome}
-            >
+            <h1 className="text-2xl font-[600] flex items-center gap-2.5 hover:text-primary/90 transition-colors cursor-pointer">
               <Shapes className="h-6 w-6" />
               Collaborix
             </h1>
