@@ -42,7 +42,11 @@ function DeleteDocument() {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <Button asChild variant="destructive">
+      <Button
+        asChild
+        variant="destructive"
+        className="w-[80%] md:w-auto mx-auto md:mx-0"
+      >
         <DialogTrigger>Delete</DialogTrigger>
       </Button>
       <DialogContent>
@@ -59,6 +63,7 @@ function DeleteDocument() {
             variant="destructive"
             onClick={handleDelete}
             disabled={isPending}
+            className="w-[80%] md:w-auto mx-auto md:auto"
           >
             {isPending ? "Deleting..." : "Delete"}
           </Button>

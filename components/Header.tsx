@@ -25,24 +25,26 @@ function Header() {
       <div className="flex items-center justify-between p-4 mx-5">
         <div onClick={redirectToHome} className="cursor-pointer">
           {user ? (
-            <h1 className="text-2xl font-medium">
+            <h1 className="text-xl md:text-2xl font-medium">
               {user.firstName}
               <span>{"'s"}</span> Space
             </h1>
           ) : (
-            <h1 className="text-2xl font-[600] flex items-center gap-2.5 hover:text-primary/90 transition-colors cursor-pointer">
-              <Shapes className="h-6 w-6" />
+            <h1 className="text-xl md:text-2xl font-[600] flex items-center gap-2.5 hover:text-primary/90 transition-colors cursor-pointer">
+              <Shapes className="h-5 w-5 md:h-6 md:w-6" />
               Collaborix
             </h1>
           )}
         </div>
 
-        <div className="absolute left-1/2 transform -translate-x-1/2">
+        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
           <Breadcrumbs />
         </div>
 
-        <div className="flex gap-8">
-          <ThemeToggle />
+        <div className="flex items-center gap-2 md:gap-8">
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
           <SignedOut>
             <Button variant="default" asChild className="font-medium">
               <SignInButton mode="modal" />

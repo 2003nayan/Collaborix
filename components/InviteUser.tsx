@@ -73,7 +73,8 @@ function InviteUser() {
             toast.error(
               error instanceof Error
                 ? error.message
-                : "User added but failed to send invitation email"
+                : // : "User added but failed to send invitation email"
+                  "User added"
             );
           }
         } else {
@@ -88,7 +89,7 @@ function InviteUser() {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <Button asChild variant="outline" className="dark:hover:bg-gray-700">
+      <Button asChild variant="outline" className="w-[80%] md:w-auto mx-auto md:mx-0 dark:hover:bg-gray-700">
         <DialogTrigger>Invite</DialogTrigger>
       </Button>
       <DialogContent>

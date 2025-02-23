@@ -68,9 +68,11 @@ function ManageUsers() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Button asChild variant="outline" className="dark:hover:bg-gray-700">
-        <DialogTrigger>Users ({usersInRoom?.docs.length})</DialogTrigger>
+        <DialogTrigger className="flex md:flex-row">
+          Users ({usersInRoom?.docs.length})
+        </DialogTrigger>
       </Button>
-      <DialogContent>
+      <DialogContent className="w-[95vw] max-w-md md:w-full">
         <DialogHeader>
           <DialogTitle>Users with Access</DialogTitle>
           <DialogDescription>
@@ -84,16 +86,22 @@ function ManageUsers() {
           {usersInRoom?.docs.map((doc) => (
             <div
               key={doc.data().userId}
-              className="flex items-center justify-between"
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
             >
-              <p className="font-light">
+              <p className="font-light text-sm sm:text-base break-all">
                 {doc.data().userId === user?.emailAddresses[0].toString()
                   ? `You (${doc.data().userId})`
                   : doc.data().userId}
               </p>
 
-              <div className="flex items-center gap-2">
-                <Button variant="outline">{doc.data().role}</Button>
+              <div className="flex items-center gap-2 self-end sm:self-auto">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="text-xs sm:text-sm"
+                >
+                  {doc.data().role}
+                </Button>
 
                 {isOwner &&
                   doc.data().userId !== user?.emailAddresses[0].toString() && (
@@ -102,6 +110,7 @@ function ManageUsers() {
                       onClick={() => handleDelete(doc.data().userId)}
                       disabled={isPending}
                       size="sm"
+                      className="text-xs sm:text-sm"
                     >
                       {isPending ? "Removing..." : "X"}
                     </Button>

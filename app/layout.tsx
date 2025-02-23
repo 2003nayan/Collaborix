@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "./providers";
+import { Suspense } from "react";
+import Loading from "@/components/Loading";
 
 export const metadata: Metadata = {
   title: "Collaborix",
@@ -27,13 +29,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Header />
-            <div className="flex min-h-screen">
-              <Sidebar />
-              <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide dark:bg-zinc-900">
-                {children}
+            <Suspense fallback={<Loading />}>
+              <Header />
+              <div className="flex min-h-screen">
+                <Sidebar />
+                <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide dark:bg-zinc-900">
+                  {children}
+                </div>
               </div>
-            </div>
+            </Suspense>
 
             <Toaster position="top-center" />
           </ThemeProvider>

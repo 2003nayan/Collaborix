@@ -1,7 +1,7 @@
 "use client";
 
 import { useRoom } from "@liveblocks/react";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import * as Y from "yjs";
 import { LiveblocksYjsProvider } from "@liveblocks/yjs";
 import { Button } from "./ui/button";
@@ -15,7 +15,7 @@ import stringToColor from "@/lib/stringToColor";
 import { useSelf } from "@liveblocks/react/suspense";
 import TranslateDocument from "./TranslateDocument";
 import ChatToDocument from "./ChatToDocument";
-// import { ShareDocument } from './ShareDocument';
+import Loading from "./Loading";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -38,11 +38,11 @@ function BlockNote({ doc, provider, darkMode }: EditorProps) {
   });
 
   return (
-    <div className="relative max-w-6xl mx-auto p-6 rounded-lg shadow-sm">
+    <div className="relative w-full md:max-w-6xl mx-auto md:p-6 rounded-lg shadow-sm">
       <BlockNoteView
         editor={editor}
         theme={darkMode ? "dark" : "light"}
-        className="min-h-screen border rounded-lg"
+        className="min-h-screen border rounded-lg w-full"
       />
     </div>
   );
@@ -77,32 +77,26 @@ function Editor() {
   }`;
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
-      <div className="flex items-center gap-4 justify-end mb-8 sticky top-4 z-10 bg-opacity-80 backdrop-blur-sm p-3 rounded-lg shadow-sm">
-        <TranslateDocument doc={doc} />
-        <ChatToDocument doc={doc} />
-        {/* <ShareDocument 
-          documentId={room.id} 
-          documentName="Document Title" // You might want to pass this as a prop
-        /> */}
-        <Button
-          className={`${style} flex items-center gap-2`}
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          {darkMode ? (
-            <>
-              <SunIcon size={18} />
-            </>
-          ) : (
-            <>
-              <MoonIcon size={18} />
-            </>
-          )}
-        </Button>
-      </div>
+    <Suspense fallback={<Loading />}>
+      <div className="max-w-6xl mx-auto p-4 sm:p-4 p-2">
+        <div className="flex items-center gap-2 sm:gap-4 justify-center mb-4 sm:mb-8 sticky top-4 z-10 bg-opacity-80 backdrop-blur-sm p-2 sm:p-3 rounded-lg shadow-sm flex-wrap">
+          <TranslateDocument doc={doc} />
+          <ChatToDocument doc={doc} />
+          <Button
+            className={`${style} flex items-center gap-2 text-sm sm:text-base`}
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? (
+              <SunIcon size={16} className="sm:size-18" />
+            ) : (
+              <MoonIcon size={16} className="sm:size-18" />
+            )}
+          </Button>
+        </div>
 
-      <BlockNote doc={doc} provider={provider} darkMode={darkMode} />
-    </div>
+        <BlockNote doc={doc} provider={provider} darkMode={darkMode} />
+      </div>
+    </Suspense>
   );
 }
 
