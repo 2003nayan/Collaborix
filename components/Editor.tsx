@@ -79,7 +79,7 @@ function Editor() {
   return (
     <Suspense fallback={<Loading />}>
       <div className="max-w-6xl mx-auto p-4 sm:p-4 p-2">
-        <div className="flex items-center gap-2 sm:gap-4 justify-center mb-4 sm:mb-8 sticky top-4 z-10 bg-opacity-80 backdrop-blur-sm p-2 sm:p-3 rounded-lg shadow-sm flex-wrap">
+        <div className="flex items-center gap-2 sm:gap-4 justify-end mb-4 sm:mb-8 sticky top-4 z-10 bg-opacity-80 backdrop-blur-sm p-2 sm:p-3 rounded-lg shadow-sm flex-wrap">
           <TranslateDocument doc={doc} />
           <ChatToDocument doc={doc} />
           <Button
