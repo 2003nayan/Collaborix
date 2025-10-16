@@ -5,6 +5,9 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "./providers";
 import { Suspense } from "react";
 import Loading from "@/components/Loading";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Collaborix",
@@ -20,7 +23,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body className="min-h-screen bg-background text-foreground dark:bg-slate-950 dark:text-white">
+        <body className={`${plusJakarta.className} min-h-screen bg-background text-foreground dark:bg-slate-950 dark:text-white`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

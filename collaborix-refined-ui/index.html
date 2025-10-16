@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborix - Transform Your Team's Collaboration</title>
+    <meta name="description" content="The future of document collaboration. Experience seamless real-time editing, AI-powered insights, and intuitive workflows.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="header glass-morphic">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <a href="#" class="nav__logo" onclick="showPage('home')">
+                    <div class="logo-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <span class="logo-text">Collaborix</span>
+                </a>
+            </div>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#" class="nav__link active" onclick="showPage('home')">
+                            <span>Home</span>
+                            <div class="nav__link-bg"></div>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link" onclick="showPage('features')">
+                            <span>Features</span>
+                            <div class="nav__link-bg"></div>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link" onclick="showPage('about')">
+                            <span>About</span>
+                            <div class="nav__link-bg"></div>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link" onclick="showPage('pricing')">
+                            <span>Pricing</span>
+                            <div class="nav__link-bg"></div>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link" onclick="showPage('contact')">
+                            <span>Contact</span>
+                            <div class="nav__link-bg"></div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="nav__actions">
+                    <button class="btn btn--ghost" onclick="openModal('login')">
+                        <span>Sign In</span>
+                        <div class="btn__glow"></div>
+                    </button>
+                    <button class="btn btn--primary" onclick="openModal('signup')">
+                        <span>Get Started</span>
+                        <div class="btn__glow"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero__content">
+                        <div class="hero__text">
+                            <div class="hero__badge glass-morphic" data-aos="fade-up">
+                                <i class="fas fa-sparkles"></i>
+                                <span>New: AI-Powered Collaboration</span>
+                            </div>
+                            <h1 class="hero__title" data-aos="fade-up" data-aos-delay="200">
+                                <span class="text-reveal">Transform Your Team's</span>
+                                <span class="text-gradient gradient-flow">Collaboration</span>
+                            </h1>
+                            <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="400">
+                                Experience the next generation of document collaboration with real-time editing, 
+                                AI assistance, and seamless team workflows that feel like magic.
+                            </p>
+                            <div class="hero__actions" data-aos="fade-up" data-aos-delay="600">
+                                <button class="btn btn--primary btn--large" onclick="openModal('signup')">
+                                    <span>Start Free Trial</span>
+                                    <i class="fas fa-rocket"></i>
+                                    <div class="btn__glow"></div>
+                                </button>
+                                <button class="btn btn--ghost btn--large" onclick="showPage('features')">
+                                    <span>Explore Features</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                    <div class="btn__glow"></div>
+                                </button>
+                            </div>
+                            <div class="hero__stats" data-aos="fade-up" data-aos-delay="800">
+                                <div class="stat glass-morphic">
+                                    <div class="stat__number">50k+</div>
+                                    <div class="stat__label">Active Teams</div>
+                                </div>
+                                <div class="stat glass-morphic">
+                                    <div class="stat__number">99.9%</div>
+                                    <div class="stat__label">Uptime</div>
+                                </div>
+                                <div class="stat glass-morphic">
+                                    <div class="stat__number">100M+</div>
+                                    <div class="stat__label">Documents</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero__visual" data-aos="fade-left" data-aos-delay="400">
+                            <div class="hero__mockup glass-morphic">
+                                <div class="mockup-glow"></div>
+                                <div class="mockup-browser">
+                                    <div class="browser-bar glass-morphic">
+                                        <div class="browser-dots">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                        <div class="browser-url glass-morphic">
+                                            <i class="fas fa-lock"></i>
+                                            <span>app.collaborix.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="browser-content">
+                                        <div class="editor-interface">
+                                            <div class="editor-toolbar glass-morphic">
+                                                <div class="toolbar-group">
+                                                    <button class="tool-btn active"><i class="fas fa-bold"></i></button>
+                                                    <button class="tool-btn"><i class="fas fa-italic"></i></button>
+                                                    <button class="tool-btn"><i class="fas fa-underline"></i></button>
+                                                </div>
+                                                <div class="toolbar-group">
+                                                    <button class="tool-btn"><i class="fas fa-link"></i></button>
+                                                    <button class="tool-btn"><i class="fas fa-image"></i></button>
+                                                    <button class="tool-btn ai-btn"><i class="fas fa-magic"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="editor-content">
+                                                <div class="collaborator-cursor cursor-1">
+                                                    <div class="cursor-pointer"></div>
+                                                    <div class="cursor-label">Sarah</div>
+                                                </div>
+                                                <div class="collaborator-cursor cursor-2">
+                                                    <div class="cursor-pointer"></div>
+                                                    <div class="cursor-label">Mike</div>
+                                                </div>
+                                                <div class="document-text">
+                                                    <h3>Project Roadmap Q1 2025</h3>
+                                                    <p class="typing-text">Real-time collaboration made simple...</p>
+                                                    <div class="ai-suggestion glass-morphic">
+                                                        <i class="fas fa-lightbulb"></i>
+                                                        <span>AI suggests: Add milestone dates</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <div class="container">
+                    <div class="section-header" data-aos="fade-up">
+                        <h2 class="section-title">
+                            <span class="text-gradient">Powerful Features</span> for Modern Teams
+                        </h2>
+                        <p class="section-subtitle">
+                            Everything you need to collaborate effectively, powered by cutting-edge technology
+                        </p>
+                    </div>
+                    <div class="features__grid">
+                        <div class="feature-card glass-morphic" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-icon">
+                                <div class="icon-glow"></div>
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="feature-title">Real-time Collaboration</h3>
+                            <p class="feature-description">
+                                See your team's changes instantly with live cursors, conflict-free editing, 
+                                and seamless synchronization across all devices.
+                            </p>
+                            <div class="feature-benefits">
+                                <span class="benefit-tag">Live Cursors</span>
+                                <span class="benefit-tag">Instant Sync</span>
+                                <span class="benefit-tag">Multi-device</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card glass-morphic" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-icon">
+                                <div class="icon-glow"></div>
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 class="feature-title">AI-Powered Features</h3>
+                            <p class="feature-description">
+                                Leverage advanced AI to generate summaries, translate content, 
+                                and get intelligent suggestions for better documents.
+                            </p>
+                            <div class="feature-benefits">
+                                <span class="benefit-tag">Smart Summaries</span>
+                                <span class="benefit-tag">Auto Translation</span>
+                                <span class="benefit-tag">Content AI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card glass-morphic" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-icon">
+                                <div class="icon-glow"></div>
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3 class="feature-title">Rich Document Editing</h3>
+                            <p class="feature-description">
+                                Create beautiful documents with comprehensive formatting, 
+                                media embedding, and advanced organization tools.
+                            </p>
+                            <div class="feature-benefits">
+                                <span class="benefit-tag">Rich Formatting</span>
+                                <span class="benefit-tag">Media Support</span>
+                                <span class="benefit-tag">Templates</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card glass-morphic" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-icon">
+                                <div class="icon-glow"></div>
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h3 class="feature-title">Universal Access</h3>
+                            <p class="feature-description">
+                                Access your documents anywhere, anytime, on any device 
+                                with our responsive cloud-based platform.
+                            </p>
+                            <div class="feature-benefits">
+                                <span class="benefit-tag">Cloud Sync</span>
+                                <span class="benefit-tag">Mobile Apps</span>
+                                <span class="benefit-tag">Offline Access</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="testimonials">
+                <div class="container">
+                    <div class="section-header" data-aos="fade-up">
+                        <h2 class="section-title">Trusted by <span class="text-gradient">Teams Worldwide</span></h2>
+                        <p class="section-subtitle">See what our users are saying about their experience</p>
+                    </div>
+                    <div class="testimonials__grid">
+                        <div class="testimonial-card glass-morphic" data-aos="fade-up" data-aos-delay="100">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <blockquote>
+                                "Collaborix has revolutionized how our team works together. The real-time features are incredible and the AI assistance saves us hours every week."
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-avatar glass-morphic">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <strong>Sarah Chen</strong>
+                                    <span>Product Manager, TechCorp</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card glass-morphic" data-aos="fade-up" data-aos-delay="200">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <blockquote>
+                                "The best collaboration tool we've ever used. It's intuitive, powerful, and reliable. Our productivity has increased by 40%."
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-avatar glass-morphic">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <strong>Michael Rodriguez</strong>
+                                    <span>Content Director, Creative Agency</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Preview -->
+            <section class="pricing-preview">
+                <div class="container">
+                    <div class="section-header" data-aos="fade-up">
+                        <h2 class="section-title">Simple, <span class="text-gradient">Transparent Pricing</span></h2>
+                        <p class="section-subtitle">Choose the plan that's right for your team</p>
+                    </div>
+                    <div class="pricing-cards">
+                        <div class="pricing-card glass-morphic" data-aos="fade-up" data-aos-delay="100">
+                            <div class="price-header">
+                                <h3>Starter</h3>
+                                <div class="price">
+                                    <span class="currency">$</span>
+                                    <span class="amount">0</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <p>Perfect for individuals and small teams</p>
+                            </div>
+                            <ul class="price-features">
+                                <li><i class="fas fa-check"></i>Up to 5 documents</li>
+                                <li><i class="fas fa-check"></i>Basic collaboration</li>
+                                <li><i class="fas fa-check"></i>1GB storage</li>
+                                <li><i class="fas fa-check"></i>Email support</li>
+                            </ul>
+                            <button class="btn btn--ghost btn--full">
+                                <span>Get Started Free</span>
+                                <div class="btn__glow"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="pricing-card glass-morphic pricing-card--featured" data-aos="fade-up" data-aos-delay="200">
+                            <div class="popular-badge glass-morphic">
+                                <i class="fas fa-crown"></i>
+                                <span>Most Popular</span>
+                            </div>
+                            <div class="price-header">
+                                <h3>Professional</h3>
+                                <div class="price">
+                                    <span class="currency">$</span>
+                                    <span class="amount">15</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <p>Advanced features for growing teams</p>
+                            </div>
+                            <ul class="price-features">
+                                <li><i class="fas fa-check"></i>Unlimited documents</li>
+                                <li><i class="fas fa-check"></i>Advanced collaboration</li>
+                                <li><i class="fas fa-check"></i>100GB storage</li>
+                                <li><i class="fas fa-check"></i>Priority support</li>
+                                <li><i class="fas fa-check"></i>AI features</li>
+                            </ul>
+                            <button class="btn btn--primary btn--full">
+                                <span>Start Free Trial</span>
+                                <div class="btn__glow"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="pricing-card glass-morphic" data-aos="fade-up" data-aos-delay="300">
+                            <div class="price-header">
+                                <h3>Enterprise</h3>
+                                <div class="price">
+                                    <span class="contact-price">Custom</span>
+                                </div>
+                                <p>Custom solutions for large organizations</p>
+                            </div>
+                            <ul class="price-features">
+                                <li><i class="fas fa-check"></i>Everything in Pro</li>
+                                <li><i class="fas fa-check"></i>Custom integrations</li>
+                                <li><i class="fas fa-check"></i>Advanced security</li>
+                                <li><i class="fas fa-check"></i>Dedicated support</li>
+                                <li><i class="fas fa-check"></i>SLA</li>
+                            </ul>
+                            <button class="btn btn--ghost btn--full" onclick="showPage('contact')">
+                                <span>Contact Sales</span>
+                                <div class="btn__glow"></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Features Page -->
+        <div id="features-page" class="page">
+            <section class="page-hero glass-morphic">
+                <div class="container">
+                    <h1 class="page-title text-gradient">Powerful Features</h1>
+                    <p class="page-subtitle">Discover all the tools that make Collaborix extraordinary</p>
+                </div>
+            </section>
+            
+            <section class="feature-showcase">
+                <div class="container">
+                    <div class="showcase-item" data-aos="fade-up">
+                        <div class="showcase-content">
+                            <h2>Real-time Magic</h2>
+                            <p>Experience seamless collaboration with live cursors, instant updates, and conflict-free editing that just works.</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i>Live cursor tracking</li>
+                                <li><i class="fas fa-check-circle"></i>Instant synchronization</li>
+                                <li><i class="fas fa-check-circle"></i>Smart conflict resolution</li>
+                            </ul>
+                        </div>
+                        <div class="showcase-visual glass-morphic">
+                            <div class="feature-demo">
+                                <i class="fas fa-users-cog"></i>
+                                <h4>Collaboration Hub</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page">
+            <section class="page-hero glass-morphic">
+                <div class="container">
+                    <h1 class="page-title text-gradient">About Collaborix</h1>
+                    <p class="page-subtitle">Building the future of collaborative document editing</p>
+                </div>
+            </section>
+            
+            <section class="about-content">
+                <div class="container">
+                    <div class="about-grid">
+                        <div class="about-text glass-morphic">
+                            <h2>Our Mission</h2>
+                            <p>To make collaborative document editing effortless and accessible to everyone. We believe great ideas emerge when teams can work together seamlessly.</p>
+                            <h3>Innovation at Core</h3>
+                            <p>Built with cutting-edge technology and powered by AI to provide the most intuitive collaboration experience possible.</p>
+                        </div>
+                        <div class="team-showcase glass-morphic">
+                            <div class="team-member">
+                                <div class="member-avatar glass-morphic">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <h4>Nayan Katiyara</h4>
+                                <p>Founder & CEO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Pricing Page -->
+        <div id="pricing-page" class="page">
+            <section class="page-hero glass-morphic">
+                <div class="container">
+                    <h1 class="page-title text-gradient">Choose Your Plan</h1>
+                    <p class="page-subtitle">Transparent pricing that scales with your team</p>
+                </div>
+            </section>
+            
+            <section class="pricing-detailed">
+                <div class="container">
+                    <div class="pricing-grid-detailed">
+                        <!-- Detailed pricing cards would go here -->
+                        <p class="text-center">Detailed pricing information coming soon...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page">
+            <section class="page-hero glass-morphic">
+                <div class="container">
+                    <h1 class="page-title text-gradient">Get in Touch</h1>
+                    <p class="page-subtitle">We'd love to hear from you</p>
+                </div>
+            </section>
+            
+            <section class="contact-content">
+                <div class="container">
+                    <div class="contact-grid">
+                        <div class="contact-info glass-morphic">
+                            <h2>Contact Information</h2>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>nayankatiyara03@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>+91-9561884240</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <form class="contact-form glass-morphic" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" class="form-control glass-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control glass-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" class="form-control glass-input" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full">
+                                <span>Send Message</span>
+                                <div class="btn__glow"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer glass-morphic">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-atom"></i>
+                        <span>Collaborix</span>
+                    </div>
+                    <p>Build Together. Collaborate Better</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#" onclick="showPage('features')">Features</a></li>
+                            <li><a href="#" onclick="showPage('pricing')">Pricing</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#" onclick="showPage('about')">About</a></li>
+                            <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Collaborix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal('login')"></div>
+        <div class="modal-content glass-morphic">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <button class="modal-close" onclick="closeModal('login')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" class="form-control glass-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" class="form-control glass-input" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full">
+                        <span>Sign In</span>
+                        <div class="btn__glow"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal('signup')"></div>
+        <div class="modal-content glass-morphic">
+            <div class="modal-header">
+                <h2>Get Started</h2>
+                <button class="modal-close" onclick="closeModal('signup')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" class="form-control glass-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" class="form-control glass-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" class="form-control glass-input" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full">
+                        <span>Start Free Trial</span>
+                        <div class="btn__glow"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
